@@ -30,9 +30,8 @@ Certifique-se de ter as seguintes ferramentas instaladas:
 2. Instale as Dependências:
 
    ```bash
-   npm install express mysql2 sequelize dotenv
-   Configure o Banco de Dados:
-
+   npm install express mysql2 sequelize dotenv body-parser
+   
 3. Crie um banco de dados chamado library no MySQL.
 Copie o arquivo .env.example para .env e ajuste as credenciais conforme seu ambiente MySQL:
 makefile

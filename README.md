@@ -56,7 +56,9 @@ Agora você está pronto para contribuir com o projeto.
 | MySQL      | Sistema de gerenciamento de banco de dados |
 | Express    | Framework de aplicação web                 |
 | mysql2     | Driver para conexão com MySQL              |
-| Sequelize  | ORM para MySQL
+| Sequelize  | ORM para MySQL                             |
+| body-parser | Middleware para processar corpos de requisições HTTP, permitindo acessar dados enviados via JSON ou formulário |
+
 
 ## Contribuindo
 Passos para Contribuir
@@ -107,14 +109,14 @@ Abra um Pull Request no GitHub para revisão e merge.
 ```
 ## Equipe do Projeto
 
-| Nome                           | Função                                |
-|--------------------------------|---------------------------------------|
-| João Pedro silva de araujo     | Gerente de Configuração/Desenvolvedor |
-| William coelho de Morais       | Scrum Master                          |
-| Gabriel araujo F de santana    | Desenvolvedor                         |
-| Gabriel G de Araújo Figueredo  | Gerente de Configuração               |
-| Rodolpho D Freire Da Rocha F   | Documentador                          |
-| João G de Almeida Coimbra      | Documentador                          |
+| Nome                                  | Função                                |
+|---------------------------------------|---------------------------------------|
+| João Pedro silva de araujo            | Desenvolvedor                         |
+| William coelho de Morais              | Scrum Master                          |
+| Gabriel araujo farias de santana      | Desenvolvedor                         |
+| Gabriel George de Araújo Figueredo    | Gerente de Configuração               |
+| Rodolpho Dihego Freire Da Rocha Filho | Documentador                          |
+| João Gunttemberg de Almeida Coimbra   | Documentador                          |
 
 
 ## Licença

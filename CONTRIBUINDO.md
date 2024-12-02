@@ -1,4 +1,4 @@
-# CONTRIBUTING
+# CONTRIBUINDO
 
 ## Descrição do projeto
 ### Sobre o projeto

@@ -120,6 +120,7 @@ Abra um Pull Request no GitHub para revisão e merge.
 
 
 ## Licença
+
 Este projeto está licenciado sob a Creative Commons CC0 1.0 Universal. 
-Para mais informações, consulte o arquivo LICEN.
+Para mais informações, consulte o arquivo LICENSE
 

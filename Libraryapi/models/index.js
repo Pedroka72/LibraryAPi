@@ -1,5 +1,7 @@
 const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = new Sequelize('seu_bancodedados', 'seu_usuario', 'sua_senha', {
+
+const sequelize = new Sequelize('test', 'root', 'pedroka280705', {
+
     host: 'localhost',
     dialect: 'mysql'
 });
@@ -17,11 +19,10 @@ const db = {
     Emprestimo
 };
 
-// Define os relacionamentos (se necessário)
-Usuario.hasMany(Emprestimo, { foreignKey: 'usuarioId' });
-Emprestimo.belongsTo(Usuario, { foreignKey: 'usuarioId', onDelete: 'SET NULL' });
+db.Usuario.hasMany(db.Emprestimo, { foreignKey: 'usuarioId', as: 'emprestimos' });
+db.Emprestimo.belongsTo(db.Usuario, { foreignKey: 'usuarioId', as: 'usuario' });
 
-Livros.hasMany(Emprestimo, { foreignKey: 'livroId' });
-Emprestimo.belongsTo(Livros, { foreignKey: 'livroId', onDelete: 'SET NULL' });
+db.Livros.hasMany(db.Emprestimo, { foreignKey: 'livroId', as: 'emprestimos' });
+db.Emprestimo.belongsTo(db.Livros, { foreignKey: 'livroId', as: 'livro' });
 
 module.exports = db;

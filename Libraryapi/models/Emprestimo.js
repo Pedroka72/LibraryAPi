@@ -16,12 +16,14 @@ module.exports = (sequelize, DataTypes) => {
       },
       usuarioId: {
         type: DataTypes.INTEGER,
+
         allowNull: true, 
         references: {
           model: "Usuarios", 
           key: "id",
         },
         onDelete: "SET NULL", 
+
         onUpdate: "CASCADE",
       },
       livroId: {
@@ -32,6 +34,7 @@ module.exports = (sequelize, DataTypes) => {
           key: "id",
         },
         onDelete: "SET NULL", 
+
         onUpdate: "CASCADE",
       },
     },
@@ -44,6 +47,6 @@ module.exports = (sequelize, DataTypes) => {
     Emprestimo.belongsTo(models.Livro, { foreignKey: 'livroId' });
         Emprestimo.belongsTo(models.Usuario, { foreignKey: 'usuarioId' });
   };
-  
+
   return Emprestimo;
 };

@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../models'); 
+
 const { Usuario, Livros, Emprestimo, sequelize } = require('../models');
 
 // Criar um novo empréstimo
@@ -23,7 +24,9 @@ router.post('/', async (req, res) => {
         const emprestimosAtivos = await Emprestimo.count({
             where: {
                 usuarioId,
+
                 status: 'pendente' 
+
             }
         });
 
@@ -58,6 +61,7 @@ router.get('/', async (req, res) => {
 });
 
 //Empréstimos pendentes por usuário
+
 router.get('/pendentes/:usuarioId', async (req, res) => {
     try {
         const { usuarioId } = req.params;
@@ -74,6 +78,7 @@ router.get('/pendentes/:usuarioId', async (req, res) => {
             include: [
                 { model: Usuario, as: 'usuario' }, 
                 { model: Livros, as: 'livro' } 
+
             ],
         });
 
@@ -94,6 +99,7 @@ router.get('/livros-mais-emprestados', async (req, res) => {
         const livrosMaisEmprestados = await Emprestimo.findAll({
             attributes: [
                 'livroId',
+
                 [sequelize.fn('COUNT', sequelize.col('livroId')), 'quantidadeEmprestimos'], 
             ],
             where: { status: 'pendente' }, 

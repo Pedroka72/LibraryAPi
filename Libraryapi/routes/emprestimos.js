@@ -6,7 +6,7 @@ const { Usuario, Livros, Emprestimo, sequelize } = require('../models');
 
 // Criar um novo empréstimo
 router.post('/', async (req, res) => {
-    console.log('Corpo da requisição:', req.body); // Adicione isso para depuração
+    console.log('Corpo da requisição:', req.body);
     try {
         const { usuarioId, livroId, dataEmprestimo, dataDevolucao } = req.body;
         const MAX_EMPRESTIMOS = 3; 
@@ -62,36 +62,37 @@ router.get('/', async (req, res) => {
 
 //Empréstimos pendentes por usuário
 
-router.get('/pendentes/:usuarioId', async (req, res) => {
+router.get('/usuarios-mais-emprestimos-pendentes', async (req, res) => {
     try {
-        const { usuarioId } = req.params;
-
-        if (!usuarioId) {
-            return res.status(400).json({ error: 'ID do usuário não fornecido' });
-        }
-
-        const emprestimosPendentes = await Emprestimo.findAll({
-            where: { 
-                usuarioId, 
-                status: 'pendente' 
-            },
-            include: [
-                { model: Usuario, as: 'usuario' }, 
-                { model: Livros, as: 'livro' } 
-
+        const usuariosMaisEmprestimos = await Emprestimo.findAll({
+            attributes: [
+                'usuarioId',
+                [sequelize.fn('COUNT', sequelize.col('usuarioId')), 'quantidadeEmprestimosPendentes'],
             ],
+            where: { status: 'pendente' }, 
+            include: [
+                {
+                    model: Usuario,
+                    as: 'usuario',
+                    attributes: ['id', 'nome', 'email'], 
+                },
+            ],
+            group: ['usuarioId', 'usuario.id', 'usuario.nome', 'usuario.email'],
+            order: [[sequelize.col('quantidadeEmprestimosPendentes'), 'DESC']], 
+            limit: 10, 
         });
 
-        if (emprestimosPendentes.length === 0) {
-            return res.status(404).json({ error: 'Nenhum empréstimo pendente encontrado' });
+        if (usuariosMaisEmprestimos.length === 0) {
+            return res.status(404).json({ error: 'Nenhum usuário encontrado com empréstimos pendentes' });
         }
 
-        res.json(emprestimosPendentes);
+        res.status(200).json(usuariosMaisEmprestimos);
     } catch (err) {
-        console.error('Erro ao buscar empréstimos pendentes:', err);
-        res.status(500).json({ error: 'Erro ao buscar empréstimos pendentes' });
+        console.error('Erro ao buscar usuários com mais empréstimos pendentes:', err);
+        res.status(500).json({ error: 'Erro ao buscar usuários com mais empréstimos pendentes' });
     }
 });
+
 
 //livros mais emprestados
 router.get('/livros-mais-emprestados', async (req, res) => {

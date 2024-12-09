@@ -4,7 +4,7 @@ const db = require('./models');
 
 const livrosRouter = require('./routes/livros');
 const emprestimosRouter = require('./routes/emprestimos');
-const usuarioRouter = require('./routes/usuario'); // Verifique se o caminho está correto
+const usuarioRouter = require('./routes/usuario'); 
 
 require('dotenv').config();
 

@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const { Livros } = require('../models'); // Certifique-se de que isso está correto
+const { Livros } = require('../models'); 
 
 // Listar todos os livros
 router.get("/", async (req, res) => {
   try {
-    const livros = await Livros.findAll(); // Corrigido para usar 'Livros' diretamente
+    const livros = await Livros.findAll(); 
     res.json(livros);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -54,4 +54,4 @@ router.delete("/:id", async (req, res) => {
 });
 
 module.exports = router;
-﻿
+

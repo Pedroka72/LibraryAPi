@@ -16,22 +16,25 @@ module.exports = (sequelize, DataTypes) => {
       },
       usuarioId: {
         type: DataTypes.INTEGER,
-        allowNull: true, // Permitir NULL para suportar SET NULL
+
+        allowNull: true, 
         references: {
-          model: "Usuarios", // Nome da tabela relacionada
+          model: "Usuarios", 
           key: "id",
         },
-        onDelete: "SET NULL", // Define o comportamento ao excluir o usuário
+        onDelete: "SET NULL", 
+
         onUpdate: "CASCADE",
       },
       livroId: {
         type: DataTypes.INTEGER,
-        allowNull: true, // Permitir NULL para suportar SET NULL
+        allowNull: true,
         references: {
-          model: "Livros", // Nome da tabela relacionada
+          model: "Livros",
           key: "id",
         },
-        onDelete: "SET NULL", // Define o comportamento ao excluir o livro
+        onDelete: "SET NULL", 
+
         onUpdate: "CASCADE",
       },
     },

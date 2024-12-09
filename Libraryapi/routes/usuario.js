@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { Usuario } = require('../models'); // Importa o modelo Usuario
+const { Usuario } = require('../models'); 
 
 // Listar todos os usuários
 router.get("/", async (req, res) => {
@@ -15,7 +15,7 @@ router.get("/", async (req, res) => {
 
 // Criar um novo usuário
 router.post('/', async (req, res) => {
-    console.log('Corpo da requisição:', req.body); // Adicione isso para depuração
+    console.log('Corpo da requisição:', req.body); 
     try {
         const novoUsuario = await Usuario.create(req.body);
         res.status(201).json(novoUsuario);
@@ -58,6 +58,7 @@ router.delete("/:id", async (req, res) => {
         if (!usuario) return res.status(404).json({ error: "Usuário não encontrado" });
 
         await usuario.destroy();
+        console.log(`Usuário com ID ${req.params.id} foi excluído com sucesso.`);
         res.status(204).end();
     } catch (err) {
         console.error('Erro ao deletar usuário:', err);

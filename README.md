@@ -25,15 +25,15 @@ Certifique-se de ter as seguintes ferramentas instaladas:
 ### Passos para Configuração  
 1. **Clone o Repositório:**  
    ```bash
-   git clone https://github.com/PoisonRose/LibraryApi.git
-   cd LibraryApi
+   git clone https://github.com/Pedroka72/LibraryApi.git
+   cd Libraryapi
 
 2. Instale as Dependências:
 
    ```bash
-   npm install express mysql2 sequelize dotenv body-parser
+   npm install express mysql2 sequelize dotenv body-parser nodemon
    
-3. Crie um banco de dados chamado library no MySQL.
+3. Crie um banco de dados chamado libraryapi no MySQL.
 Copie o arquivo .env.example para .env e ajuste as credenciais conforme seu ambiente MySQL:
 makefile
 
@@ -41,7 +41,7 @@ makefile
    DB_HOST=localhost
    DB_USER=seu_usuario
    DB_PASSWORD=sua_senha
-   DB_NAME=library
+   DB_NAME=libraryapi
    DB_PORT=3306
    DB_DIALECT=mysql
 
@@ -59,6 +59,7 @@ Agora você está pronto para contribuir com o projeto.
 | mysql2     | Driver para conexão com MySQL              |
 | Sequelize  | ORM para MySQL                             |
 | body-parser | Middleware para processar corpos de requisições HTTP, permitindo acessar dados enviados via JSON ou formulário |
+| Nodemon    | Reinicia automaticamente o aplicativo node quando alterações de arquivo no diretório são detectadas. |
 
 
 ## Contribuindo

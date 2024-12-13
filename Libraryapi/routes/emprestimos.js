@@ -155,6 +155,7 @@ router.put('/:id', async (req, res) => {
     }
 });
 
+// Atualizar um empréstimo como devolvido
 router.put('/devolver/:id', async (req, res) => {
     try {
         const emprestimo = await Emprestimo.findByPk(req.params.id);
